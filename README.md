@@ -2,9 +2,10 @@
 
  Fixes:
 * Items can be purchased as expected at RipperDocs such as the tech decks and mods
-* Mods can now be equipped to teh tech decks and seem to function as expected
+* Mods can now be equipped to the tech decks and seem to function as expected
 * When a drone is manually spawned via console commands, quickhacks function as expected
 * Robots now get into the cars and fight while driving
+* No longer throw REDSCRIPT compilation errors on launch
 
 Bugs:
 * Tech deck mods work, but are misnamed as Berserks
