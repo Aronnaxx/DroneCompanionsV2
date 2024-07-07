@@ -116,10 +116,10 @@ private final static func BossThreatCalculation(owner: wref<ScriptedPuppet>, own
 			if SES.HasStatusEffect(threadEntID, t"BaseStatusEffect.WeaponMalfunction"){
 				threatValue*=0.5;
 			}
-			//Netrunners have mega useful hacks against robots
-			if ScriptedPuppet.IsMechanical(threat as NPCPuppet){
-				threatValue*=5.0;
-			}
+			// //Netrunners have mega useful hacks against robots
+			// if ScriptedPuppet.IsMechanical(threat as NPCPuppet){
+			// 	threatValue*=5.0;
+			// }
 
 		};
 		

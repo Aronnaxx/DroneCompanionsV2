@@ -92,7 +92,7 @@ public func DCOFindArchetypeName() -> CName {
       this.m_isCamera = gameObject.IsDevice() && gameObject.IsSensor() && !gameObject.IsTurret();
       this.m_isTurret = gameObject.IsTurret();
       this.m_isNetrunner = this.m_stealthMappin.IsNetrunner();
-      this.m_policeChasePrototypeEnabled = GameInstance.GetPreventionSpawnSystem(gameObject.GetGame()).IsPreventionVehiclePrototypeEnabled();
+      // this.m_policeChasePrototypeEnabled = GameInstance.GetPreventionSpawnSystem(gameObject.GetGame()).IsPreventionVehiclePrototypeEnabled();
       if this.m_isPrevention && this.m_policeChasePrototypeEnabled {
         npcPuppet = gameObject as NPCPuppet;
         if IsDefined(npcPuppet) {
@@ -212,12 +212,12 @@ public func DCOFindArchetypeName() -> CName {
     if !this.m_cautious {
       if !this.m_isDevice && NotEquals(this.m_highLevelState, gamedataNPCHighLevelState.Relaxed) && NotEquals(this.m_highLevelState, gamedataNPCHighLevelState.Any) && !this.m_isSquadInCombat && this.m_isAlive && this.m_isAggressive {
         this.m_cautious = true;
-        this.PulseContinuous(true);
+        // this.PulseContinuous(true);
       };
     } else {
       if Equals(this.m_highLevelState, gamedataNPCHighLevelState.Relaxed) || Equals(this.m_highLevelState, gamedataNPCHighLevelState.Any) || this.m_isSquadInCombat || !this.m_isAlive {
         this.m_cautious = false;
-        this.PulseContinuous(false);
+        // this.PulseContinuous(false);
       };
     };
     if this.m_hasBeenLooted || this.m_stealthMappin.IsHiddenByQuestOnMinimap() {
@@ -284,10 +284,10 @@ public func DCOFindArchetypeName() -> CName {
         };
       };
       this.m_isTagged = isTagged;
-      if this.m_isSquadInCombat && !this.m_wasSquadInCombat || this.m_numberOfShotAttempts != shotAttempts {
-        this.m_numberOfShotAttempts = shotAttempts;
-        this.Pulse(2);
-      };
+      // if this.m_isSquadInCombat && !this.m_wasSquadInCombat || this.m_numberOfShotAttempts != shotAttempts {
+      //   this.m_numberOfShotAttempts = shotAttempts;
+      //   this.Pulse(2);
+      // };
       isOnSameFloor = Equals(vertRelation, gamemappinsVerticalPositioning.Same);
       this.m_adjustedOpacity = isOnSameFloor ? this.m_defaultOpacity : 0.30 * this.m_defaultOpacity;
       shouldShowVisionCone = this.m_isAlive && isUsingSenseCone && this.m_isAggressive;
@@ -338,9 +338,9 @@ public func DCOFindArchetypeName() -> CName {
     if !this.m_lockLootQuality {
       this.m_highestLootQuality = this.m_stealthMappin.GetHighestLootQuality();
     };
-    this.m_attitudeState = this.GetStateForAttitude(attitude, canSeePlayer);
+    // this.m_attitudeState = this.GetStateForAttitude(attitude, canSeePlayer);
     this.m_stealthMappin.SetVisibleOnMinimap(shouldShowMappin);
-    this.m_stealthMappin.SetIsPulsing(this.m_pulsing);
+    // this.m_stealthMappin.SetIsPulsing(this.m_pulsing);
     this.m_clampingAvailable = this.m_isTagged || this.m_isAggressive && (this.m_isSquadInCombat || this.m_detectionAboveZero);
     this.OverrideClamp(this.m_clampingAvailable);
     this.m_wasCompanion = isCompanion;

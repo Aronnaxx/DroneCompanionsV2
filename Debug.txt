@@ -1,0 +1,18 @@
+list = {"Bombus", "Wyvern", "Griffin", "OctantArasaka", "OctantMilitech", "MechMilitech", "MechArasaka", "MechNCPD", "AndroidMelee", "AndroidRanged", "AndroidShotgunner", "AndroidNetrunner", "AndroidSniper", "AndroidHeavy"} 
+ for i,v in ipairs(list) do 
+Game.AddToInventory("DCO.Tier1"..v.."Recipe") 
+end 
+Game.AddToInventory("DCO.DroneCore", 9999)
+
+Game.AddToInventory("DCO.StreetDeck1") --Mox Circuit Driver MK I
+Game.AddToInventory("DCO.StreetDeck2") --Mox Circuit Driver MK II
+Game.AddToInventory("DCO.StreetDeck3") --Mox Circuit Driver MK III
+
+Game.AddToInventory("DCO.NomadDeck1") --Meta Transporter MK I
+Game.AddToInventory("DCO.NomadDeck2") --Meta Transporter MK II
+Game.AddToInventory("DCO.NomadDeck3") --Meta Transporter MK III
+
+Game.AddToInventory("DCO.CorpoDeck1") --Kang Tao Neural Simulator MK I
+Game.AddToInventory("DCO.CorpoDeck2") --Kang Tao Neural Simulator MK I
+
+for i=1,9 do Game.AddToInventory("DCO.TechDeckMod"..i) end 

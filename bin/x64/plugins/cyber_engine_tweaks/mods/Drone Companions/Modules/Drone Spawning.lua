@@ -236,22 +236,27 @@ function DCO:new()
 			end)
 
 			--Spawn the drone
-			heading = Game.GetPlayer():GetWorldForward() 
-			offsetDir = ToVector3{heading.x, heading.y, heading.z} 
+			local heading = Game.GetPlayer():GetWorldForward() 
+			local offsetDir = ToVector3{heading.x, heading.y, heading.z} 
 			offsetDir.x = heading.x 
 			offsetDir.y = heading.y 
 			offsetDir.z = heading.z 
 
-			recordEnt = {}
-			droneDistances = {}
+			local recordEnt = {}
+			local droneDistances = {}
 			--Spawn the appropriate guy
 			for i=1,DroneRecords do
 				recordEnt[1] = TweakDBID.new(drone_records[selectedRecipe.label]..i)
-				entityList = Game.GetCompanionSystem():GetSpawnedEntities(recordEnt[1])
+				local entityList = Game.GetCompanionSystem():GetSpawnedEntities(recordEnt[1])
 				
 				if table.getn(entityList) == 0 then
 					Game.GetCompanionSystem():DespawnSubcharacter(recordEnt[1])
-					Game.GetCompanionSystem():SpawnSubcharacter(recordEnt[1],  2 + math.random(10,40)/10, offsetDir)
+					local entitySpec = DynamicEntitySpec.new()
+					entitySpec.recordID = recordEnt[1]
+					entitySpec.position = offsetDir
+					entitySpec.orientation = Game.GetPlayer():GetWorldOrientation()
+					entitySpec.tags = { "DCO_Drone" }
+					Game.GetDynamicEntitySystem():CreateEntity(entitySpec)
 					prev_spawn = recordEnt[1]
 					break
 				else
@@ -264,17 +269,22 @@ function DCO:new()
 				
 				--If we didn't despawn enough dead ones through distance, find the farthest away, and despawn that one
 				if i == DroneRecords then
-					longestDist=-1
-					longestDistIndex = 1
+					local longestDist = -1
+					local longestDistIndex = 1
 					for a,b in ipairs(droneDistances) do
-						if b>longestDist then
+						if b > longestDist then
 							longestDistIndex = a
 							longestDist = b
 						end
 					end
 					recordEnt[1] = TweakDBID.new(drone_records[selectedRecipe.label]..longestDistIndex)
 					Game.GetCompanionSystem():DespawnSubcharacter(recordEnt[1])
-					Game.GetCompanionSystem():SpawnSubcharacter(recordEnt[1],  2 + math.random(10,40)/10, offsetDir)
+					local entitySpec = DynamicEntitySpec.new()
+					entitySpec.recordID = recordEnt[1]
+					entitySpec.position = offsetDir
+					entitySpec.orientation = Game.GetPlayer():GetWorldOrientation()
+					entitySpec.tags = { "DCO_Drone" }
+					Game.GetDynamicEntitySystem():CreateEntity(entitySpec)
 					prev_spawn = recordEnt[1]
 				end
 				
